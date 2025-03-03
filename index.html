@@ -27,61 +27,15 @@
     </style>
 </head>
 <body>
-    <img src="Croccodile.png" alt="">
-    <div class="container">
-        <div id="nr1"></div>
-        <input id="biggerOrLower" type="text" placeholder="Enter >, <, or =" />
-        <div id="nr2"></div>
-    </div>
+   <div id="view"></div>
+
+      
+
+
     
-    <div class="buttons">
-        <button id="submit" onclick="submitNumbers()">Submit</button>
-        <button id="reset" onclick="resetNumbers()">Reset</button>
-    </div>
 
-    <div id="score">Score: 0</div>
-
-    <script>
-        let score = 0;
-        let canSubmit = true;
-
-        function generateNumbers() {
-            let num1 = Math.floor(Math.random() * 10) + 1;
-            let num2 = Math.floor(Math.random() * 10) + 1;
-            document.getElementById('nr1').innerText = num1;
-            document.getElementById('nr2').innerText = num2;
-        }
-
-        function submitNumbers() {
-            if (!canSubmit) return;
-            let nr1 = parseInt(document.getElementById('nr1').innerText);
-            let nr2 = parseInt(document.getElementById('nr2').innerText);
-            let guess = document.getElementById('biggerOrLower').value.trim();
-            let correctAnswer;
-
-            if (nr1 > nr2) {
-                correctAnswer = ">";
-            } else if (nr1 < nr2) {
-                correctAnswer = "<";
-            } else {
-                correctAnswer = "=";
-            }
-
-            if (guess === correctAnswer) {
-                score++;
-            }
-
-            document.getElementById('score').innerText = "Score: " + score;
-            canSubmit = false;
-        }
-
-        function resetNumbers() {
-            generateNumbers();
-            document.getElementById('biggerOrLower').value = '';
-            canSubmit = true;
-        }
-
-        generateNumbers();
-    </script>
+    <script src="model.js"></script>
+    <script src="view.js"></script>
+    <script src="controller.js"></script>
 </body>
 </html>
